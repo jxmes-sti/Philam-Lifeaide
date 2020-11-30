@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:philam_lifeaide/screens/home/components/foods.dart';
+import 'package:philam_lifeaide/screens/home/components/tryfoods.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -11,7 +11,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.red[200],
-      body: IntroThreePage(),
+      body: TryFoods(),
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:philam_lifeaide/screens/home/components/grow_foods_widget.dart';
 import 'package:philam_lifeaide/screens/home/components/swiper_pagination.dart';
-import 'package:philam_lifeaide/screens/timeline/timeline.dart';
 
 class IntroThreePage extends StatefulWidget {
   static final String path = "lib/src/pages/onboarding/intro3.dart";
@@ -13,7 +13,7 @@ class _IntroThreePageState extends State<IntroThreePage> {
   final SwiperController _swiperController = SwiperController();
   final int _pageCount = 3;
   int _currentIndex = 0;
-  final List<String> titles = ["Grow Foods", "Grow Foods", "Grow Foods"];
+  final List<String> titles = ["Go Foods", "Grow Foods", "Glow Foods"];
   final List<Color> pageBgs = [
     Colors.blue.shade300,
     Colors.grey.shade600,
@@ -21,9 +21,9 @@ class _IntroThreePageState extends State<IntroThreePage> {
   ];
 
   final List<String> images = [
-    "assets/images/rice.jpg",
-    "assets/images/pogi_lang.png",
-    "assets/images/rice.jpg",
+    'C:\Philam Lifeaide\philam_lifeaide\assets\icons\Go.svg',
+    'C:\Philam Lifeaide\philam_lifeaide\assets\icons\Grow.svg',
+    'C:\Philam Lifeaide\philam_lifeaide\assets\icons\Glow.svg',
   ];
 
   @override
@@ -37,7 +37,7 @@ class _IntroThreePageState extends State<IntroThreePage> {
               height: 300,
               margin: const EdgeInsets.only(left: 8.0, right: 8.0),
               decoration: BoxDecoration(
-                  color: Theme.of(context).accentColor,
+                  color: Colors.red[200],
                   borderRadius: BorderRadius.circular(5.0)),
             ),
           ),
@@ -45,8 +45,11 @@ class _IntroThreePageState extends State<IntroThreePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Expanded(
-                  child: Swiper(
+                child: Swiper(
                 index: _currentIndex,
+                onTap: (_currentIndex[0]){
+                  
+                },
                 controller: _swiperController,
                 itemCount: _pageCount,
                 onIndexChanged: (index) {
@@ -82,7 +85,7 @@ class _IntroThreePageState extends State<IntroThreePage> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => ShowcaseActivityTimeline()));
+                  builder: (context) => Grow_Foods()));
         },
         child: Container(
           width: double.infinity,
@@ -101,14 +104,15 @@ class _IntroThreePageState extends State<IntroThreePage> {
               ),
               SizedBox(height: 30.0),
               Expanded(
-                child: ClipOval(
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(300.0),
                     child: Container(
-                  height: 300,
-                  width: 300,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage(icon), fit: BoxFit.cover)),
-                )),
+                      height: 300,
+                      width: 300,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage(icon), fit: BoxFit.cover)),
+                    )),
               ),
               SizedBox(height: 50.0),
             ],
