@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:philam_lifeaide/screens/home/components/go_foods_widget.dart';
-import 'package:philam_lifeaide/screens/home/components/grow_foods_widget.dart';
+import 'go_foods_plate.dart';
 
 class TryFoods extends StatefulWidget {
   @override
@@ -60,8 +59,10 @@ class GoFoods extends StatelessWidget {
             ),
             child: InkWell(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Grow_Foods()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => EcommerceFivePage()));
                 },
                 child: Stack(children: [
                   Container(
@@ -89,8 +90,10 @@ class GrowFoods extends StatelessWidget {
             ),
             child: InkWell(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Grow_Foods()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => EcommerceFivePage()));
                 },
                 child: Stack(children: [
                   Container(
@@ -118,8 +121,10 @@ class GlowFoods extends StatelessWidget {
             ),
             child: InkWell(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Grow_Foods()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => EcommerceFivePage()));
                 },
                 child: Stack(children: [
                   Container(
