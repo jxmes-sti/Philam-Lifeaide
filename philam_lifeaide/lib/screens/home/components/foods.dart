@@ -1,35 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:philam_lifeaide/screens/home/components/go_foods_widget.dart';
 import 'package:philam_lifeaide/screens/home/components/grow_foods_widget.dart';
-import 'package:philam_lifeaide/screens/home/components/swiper_pagination.dart';
 
-class IntroThreePage extends StatefulWidget {
-  static final String path = "lib/src/pages/onboarding/intro3.dart";
+class TryFoods extends StatefulWidget {
   @override
-  _IntroThreePageState createState() => _IntroThreePageState();
+  _TryFoodsState createState() => _TryFoodsState();
 }
 
-class _IntroThreePageState extends State<IntroThreePage> {
-  final SwiperController _swiperController = SwiperController();
-  final int _pageCount = 3;
-  int _currentIndex = 0;
-  final List<String> titles = ["Go Foods", "Grow Foods", "Glow Foods"];
-  final List<Color> pageBgs = [
-    Colors.blue.shade300,
-    Colors.grey.shade600,
-    Colors.cyan.shade300
-  ];
+class _TryFoodsState extends State<TryFoods> {
+  PageController _controller = PageController(
+    initialPage: 0,
+  );
 
-  final List<String> images = [
-    'C:\Philam Lifeaide\philam_lifeaide\assets\icons\Go.svg',
-    'C:\Philam Lifeaide\philam_lifeaide\assets\icons\Grow.svg',
-    'C:\Philam Lifeaide\philam_lifeaide\assets\icons\Glow.svg',
-  ];
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red[100],
+      backgroundColor: Colors.red[200],
       body: Stack(
         children: <Widget>[
           Center(
@@ -37,86 +29,107 @@ class _IntroThreePageState extends State<IntroThreePage> {
               height: 300,
               margin: const EdgeInsets.only(left: 8.0, right: 8.0),
               decoration: BoxDecoration(
-                  color: Colors.red[200],
+                  color: Color(0xffff3a5a),
                   borderRadius: BorderRadius.circular(5.0)),
             ),
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Expanded(
-                child: Swiper(
-                index: _currentIndex,
-                onTap: (_currentIndex[0]){
-                  
-                },
-                controller: _swiperController,
-                itemCount: _pageCount,
-                onIndexChanged: (index) {
-                  setState(() {
-                    _currentIndex = index;
-                  });
-                },
-                loop: true,
-                itemBuilder: (context, index) {
-                  return _buildPage(
-                      title: titles[index],
-                      icon: images[index],
-                      pageBg: pageBgs[index]);
-                },
-                pagination: SwiperPagination(
-                    builder: CustomPaginationBuilder(
-                        activeSize: Size(10.0, 20.0),
-                        size: Size(10.0, 15.0),
-                        color: Colors.grey.shade600)),
-              )),
+          PageView(
+            controller: _controller,
+            children: [
+              GoFoods(),
+              GrowFoods(),
+              GlowFoods(),
             ],
-          ),
+          )
         ],
       ),
     );
   }
+}
 
-  Widget _buildPage({String title, String icon, Color pageBg}) {
-    final TextStyle titleStyle = TextStyle(
-        fontWeight: FontWeight.w500, fontSize: 20.0, color: Colors.white);
-    return InkWell(
-        onTap: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => Grow_Foods()));
-        },
-        child: Container(
-          width: double.infinity,
-          margin: const EdgeInsets.fromLTRB(16.0, 50.0, 16.0, 40.0),
-          padding: const EdgeInsets.all(16.0),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30.0), color: pageBg),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(height: 20.0),
-              Text(
-                title,
-                textAlign: TextAlign.center,
-                style: titleStyle,
-              ),
-              SizedBox(height: 30.0),
-              Expanded(
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(300.0),
-                    child: Container(
-                      height: 300,
-                      width: 300,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage(icon), fit: BoxFit.cover)),
-                    )),
-              ),
-              SizedBox(height: 50.0),
-            ],
-          ),
-        ));
+class GoFoods extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+        padding: EdgeInsets.all(MediaQuery.of(context).size.width / 10),
+        child: Card(
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            semanticContainer: true,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            child: InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Grow_Foods()));
+                },
+                child: Stack(children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/rice.png'),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
+                ]))));
+  }
+}
+
+class GrowFoods extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+        padding: EdgeInsets.all(MediaQuery.of(context).size.width / 10),
+        child: Card(
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            semanticContainer: true,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            child: InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Grow_Foods()));
+                },
+                child: Stack(children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/rice.png'),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
+                ]))));
+  }
+}
+
+class GlowFoods extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+        padding: EdgeInsets.all(MediaQuery.of(context).size.width / 10),
+        child: Card(
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            semanticContainer: true,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            child: InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Grow_Foods()));
+                },
+                child: Stack(children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/rice.png'),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
+                ]))));
   }
 }

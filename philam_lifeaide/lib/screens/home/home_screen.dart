@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:philam_lifeaide/screens/home/components/tryfoods.dart';
+import 'components/foods.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
