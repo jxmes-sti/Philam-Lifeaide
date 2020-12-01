@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-var rice = Image.asset('assets/images/rice.png');
+var pancake = Image.asset('assets/images/pancake.png');
+
+var bread = Image.asset('assets/images/pancake.png');
+
+var cereals = Image.asset('assets/images/pancake.png');
+
+var pasta = Image.asset('assets/images/pancake.png');
 
 final String eatIcon = 'assets/icons/eat-flat.svg';
 final Widget svg = SvgPicture.asset(
   eatIcon,
 );
 
-class EcommerceFivePage extends StatelessWidget {
-  const EcommerceFivePage({Key key}) : super(key: key);
+class GoFoodsPlate extends StatelessWidget {
+  const GoFoodsPlate({Key key}) : super(key: key);
 
-  Widget cards(image, title, price) {
+  Widget cards(image, title, calories) {
     return Container(
       height: 200,
       width: 200,
@@ -38,7 +44,7 @@ class EcommerceFivePage extends StatelessWidget {
                 padding: EdgeInsets.all(5),
                 margin: EdgeInsets.only(top: 4),
                 color: Colors.deepOrange,
-                child: Text("\$ " + price,
+                child: Text(calories + " cal/100g",
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -54,7 +60,27 @@ class EcommerceFivePage extends StatelessWidget {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           elevation: 5.0,
-          onPressed: () {},
+          onPressed: () {
+            showDialog(
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    backgroundColor: Color(0xfffe494d),
+                    title: Text("Notification",
+                        style: TextStyle(color: Colors.white)),
+                    content: Text("Food has been added to My Plate.",
+                        style: TextStyle(color: Colors.white)),
+                    actions: <Widget>[
+                      FlatButton(
+                          onPressed: Navigator.of(context).pop,
+                          child: Text(
+                            "OK",
+                            style: TextStyle(color: Colors.white),
+                          ))
+                    ],
+                  );
+                },
+                context: context);
+          },
           child: SvgPicture.asset(
             eatIcon,
             semanticsLabel: 'Eat button',
@@ -76,7 +102,7 @@ class EcommerceFivePage extends StatelessWidget {
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(30),
                       bottomRight: Radius.circular(30)),
-                  color: Colors.red,
+                  color: Color(0xffff3a5a),
                 ),
                 width: double.infinity,
               ),
@@ -85,7 +111,7 @@ class EcommerceFivePage extends StatelessWidget {
                 width: 299,
                 height: 279,
                 decoration: BoxDecoration(
-                    color: Colors.red[200],
+                    color: Color(0xfffe494d),
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(160),
                         bottomLeft: Radius.circular(290),
@@ -102,9 +128,15 @@ class EcommerceFivePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Container(
+                              //decoration: BoxDecoration(
+                              //   borderRadius: BorderRadius.circular(10.0),
+                              //   color: Colors.red[50]),
                               child: Text(
-                                  "Go Foods are the type of food that provide fuel and help us 'go' and be active. These foods give our muscles fuel to do things and help our brain concentrate. ")),
-                          SizedBox(height: 30),
+                            "Go Foods are the type of food that provide fuel and help us 'go' and be active. These foods give our muscles fuel to do things and help our brain concentrate. ",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: Colors.white, fontSize: 16),
+                          )),
+                          SizedBox(height: 40),
                           Material(
                             elevation: 5.0,
                             borderRadius: BorderRadius.all(Radius.circular(30)),
@@ -137,10 +169,10 @@ class EcommerceFivePage extends StatelessWidget {
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 10,
                       children: <Widget>[
-                        cards(rice, 'Brocoli', '30'),
-                        //cards(cabbage, 'Cabbage', '37'),
-                        //cards(mango, 'Mango', '22'),
-                        //cards(pineapple, 'Pineapple', '90'),
+                        cards(pancake, 'pancake', '130'),
+                        cards(bread, 'Bread', '265'),
+                        cards(cereals, 'Cereals', '379'),
+                        cards(pasta, 'Pasta', '131'),
                       ],
                     ),
                   ),

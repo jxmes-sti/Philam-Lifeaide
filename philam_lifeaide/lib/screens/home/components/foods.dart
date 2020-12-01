@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'go_foods_plate.dart';
+import 'grow_foods_plate.dart';
+import 'glow_foods_plate.dart';
 
-class TryFoods extends StatefulWidget {
+class FoodGroups extends StatefulWidget {
   @override
-  _TryFoodsState createState() => _TryFoodsState();
+  _FoodGroupsState createState() => _FoodGroupsState();
 }
 
-class _TryFoodsState extends State<TryFoods> {
+class _FoodGroupsState extends State<FoodGroups> {
   PageController _controller = PageController(
     initialPage: 0,
   );
@@ -59,20 +61,27 @@ class GoFoods extends StatelessWidget {
             ),
             child: InkWell(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => EcommerceFivePage()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => GoFoodsPlate()));
                 },
-                child: Stack(children: [
+                child: Stack(alignment: Alignment.bottomLeft, children: [
                   Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('assets/images/rice.png'),
+                        image: AssetImage('assets/images/pancake.jpg'),
                         fit: BoxFit.fill,
                       ),
                     ),
                   ),
+                  Text(
+                    "Go \nFoods",
+                    //textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontStyle: FontStyle.italic,
+                        fontFamily: "Helvetica",
+                        fontSize: 100,
+                        color: Colors.white),
+                  )
                 ]))));
   }
 }
@@ -93,17 +102,25 @@ class GrowFoods extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => EcommerceFivePage()));
+                          builder: (context) => GrowFoodsPlate()));
                 },
-                child: Stack(children: [
+                child: Stack(alignment: Alignment.bottomLeft, children: [
                   Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('assets/images/rice.png'),
+                        image: AssetImage('assets/images/wings.jpg'),
                         fit: BoxFit.fill,
                       ),
                     ),
                   ),
+                  Text(
+                    "Grow \nFoods",
+                    style: TextStyle(
+                        fontFamily: "Helvetica",
+                        fontStyle: FontStyle.italic,
+                        fontSize: 100,
+                        color: Colors.white),
+                  )
                 ]))));
   }
 }
@@ -124,17 +141,25 @@ class GlowFoods extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => EcommerceFivePage()));
+                          builder: (context) => GlowFoodsPlate()));
                 },
-                child: Stack(children: [
+                child: Stack(alignment: Alignment.bottomLeft, children: [
                   Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('assets/images/rice.png'),
+                        image: AssetImage('assets/images/veggies.jpg'),
                         fit: BoxFit.fill,
                       ),
                     ),
                   ),
+                  Text(
+                    "Glow \nFoods",
+                    style: TextStyle(
+                        fontStyle: FontStyle.italic,
+                        fontFamily: "Roboto",
+                        fontSize: 100,
+                        color: Colors.white),
+                  )
                 ]))));
   }
 }

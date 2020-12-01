@@ -11,10 +11,6 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  final String url =
-      'https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/09/04/15/lionel-messi-0.jpg?';
-  final Color green = Color(0xFF1E8161);
-
   _launchURL() async {
     const url = 'https://www.philamlife.com/en/index.html';
     if (await canLaunch(url)) {
