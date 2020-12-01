@@ -169,7 +169,7 @@ class GoFoodsPlate extends StatelessWidget {
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 10,
                       children: <Widget>[
-                        cards(pancake, 'pancake', '130'),
+                        cards(pancake, 'Rice', '130'),
                         cards(bread, 'Bread', '265'),
                         cards(cereals, 'Cereals', '379'),
                         cards(pasta, 'Pasta', '131'),

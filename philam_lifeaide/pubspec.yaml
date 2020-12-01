@@ -41,10 +41,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  timeline_tile: ^1.0.0
-  google_fonts: ^1.1.0
-  weather_icons: ^2.0.1
-  flutter_showcase: ^0.1.0
+  timeline_tile: ^0.1.2
 
 
 # For information on the generic Dart part of this file, see the
@@ -74,12 +71,13 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: Roboto
-      fonts:
-      #  - asset: fonts/Roboto-Bold.ttf
-        - asset: fonts/Roboto-BoldItalic.ttf
-          weight: 700
+  #fonts:
+  #  - family: Roboto
+  #    fonts:
+  #      - asset: fonts/Roboto-Regular.ttf
+  #      - asset: fonts/Roboto-BoldItalic.ttf
+  #      - asset: fonts/Roboto-Light.ttf
+      #    weight: 700
   #      - style: regular
   #   - family: Trajan Pro
   #     fonts:

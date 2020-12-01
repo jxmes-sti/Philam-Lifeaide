@@ -17,7 +17,7 @@ class TabControllerWidget extends StatelessWidget {
         body: TabBarView(
           children: [
             HomeScreen(),
-            ShowcaseActivityTimeline(),
+            TimeLinePage(),
             ProfilePage(),
           ],
         ),
