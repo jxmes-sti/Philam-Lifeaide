@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-var pancake = Image.asset('assets/images/pancake.png');
-
-var bread = Image.asset('assets/images/pancake.png');
-
-var cereals = Image.asset('assets/images/pancake.png');
-
-var pasta = Image.asset('assets/images/pancake.png');
-
 final String eatIcon = 'assets/icons/eat-flat.svg';
 final Widget svg = SvgPicture.asset(
   eatIcon,
 );
+
+final List<String> image = [
+  "assets/icons/rice-bowl.png",
+  "assets/icons/bread.png",
+  "assets/icons/cereal.png",
+  "assets/icons/spaguetti.png"
+];
 
 class GoFoodsPlate extends StatelessWidget {
   const GoFoodsPlate({Key key}) : super(key: key);
@@ -35,6 +34,7 @@ class GoFoodsPlate extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            //image(),
             SizedBox(
               height: 5,
             ),
@@ -127,15 +127,6 @@ class GoFoodsPlate extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Container(
-                              //decoration: BoxDecoration(
-                              //   borderRadius: BorderRadius.circular(10.0),
-                              //   color: Colors.red[50]),
-                              child: Text(
-                            "Go Foods are the type of food that provide fuel and help us 'go' and be active. These foods give our muscles fuel to do things and help our brain concentrate. ",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.white, fontSize: 16),
-                          )),
                           SizedBox(height: 40),
                           Material(
                             elevation: 5.0,
@@ -169,10 +160,10 @@ class GoFoodsPlate extends StatelessWidget {
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 10,
                       children: <Widget>[
-                        cards(pancake, 'Rice', '130'),
-                        cards(bread, 'Bread', '265'),
-                        cards(cereals, 'Cereals', '379'),
-                        cards(pasta, 'Pasta', '131'),
+                        cards(image[0], 'Rice', '130'),
+                        cards(image[1], 'Bread', '265'),
+                        cards(image[2], 'Cereals', '379'),
+                        cards(image[3], 'Pasta', '131'),
                       ],
                     ),
                   ),

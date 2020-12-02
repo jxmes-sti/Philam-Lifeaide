@@ -27,7 +27,7 @@ class _ProfilePageState extends State<ProfilePage> {
         title: Text('Profile'),
         elevation: 0,
         backgroundColor: Colors.red[200],
-        centerTitle: true, // pota eto lang pala para ma-center amp
+        centerTitle: true,
       ),
       body: Column(
         children: <Widget>[

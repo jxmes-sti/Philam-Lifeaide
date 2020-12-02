@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:timeline_tile/timeline_tile.dart';
@@ -12,7 +13,13 @@ class _TimeLinePageState extends State<TimeLinePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text("Timeline"),
+        automaticallyImplyLeading: false,
+        backgroundColor: Color(0xffff3a5a),
+        centerTitle: true,
+      ),
+      backgroundColor: Colors.red[200],
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -29,10 +36,21 @@ class _TimeLinePageState extends State<TimeLinePage> {
               leftChild: Container(
                 child: Column(
                   children: [
+                    SvgPicture.asset(
+                      eat,
+                      height: 50,
+                      width: 50,
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
                     Text(
                       "Breakfast",
-                      style: TextStyle(fontSize: 12, color: Colors.black),
-                    )
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          color: Colors.black),
+                    ),
                   ],
                 ),
               ),
@@ -48,10 +66,10 @@ class _TimeLinePageState extends State<TimeLinePage> {
               rightChild: Container(
                 child: Column(
                   children: [
-                    SvgPicture.asset(
+                    Image.asset(
                       chicken,
-                      height: 50,
-                      width: 50,
+                      height: 40,
+                      width: 40,
                     ),
                     SizedBox(
                       height: 5,
@@ -86,10 +104,21 @@ class _TimeLinePageState extends State<TimeLinePage> {
               leftChild: Container(
                 child: Column(
                   children: [
+                    SvgPicture.asset(
+                      eat,
+                      height: 50,
+                      width: 50,
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
                     Text(
                       "Lunch",
-                      style: TextStyle(fontSize: 12, color: Colors.black),
-                    )
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          color: Colors.black),
+                    ),
                   ],
                 ),
               ),
@@ -105,8 +134,8 @@ class _TimeLinePageState extends State<TimeLinePage> {
               rightChild: Container(
                 child: Column(
                   children: [
-                    SvgPicture.asset(
-                      rice,
+                    Image.asset(
+                      bread,
                       height: 50,
                       width: 50,
                     ),
@@ -114,7 +143,7 @@ class _TimeLinePageState extends State<TimeLinePage> {
                       height: 5,
                     ),
                     Text(
-                      "Rice",
+                      "Bread",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 15,
@@ -143,10 +172,10 @@ class _TimeLinePageState extends State<TimeLinePage> {
               leftChild: Container(
                 child: Column(
                   children: [
-                    SvgPicture.asset(
-                      fish,
-                      height: 50,
-                      width: 50,
+                    Image.asset(
+                      tuna,
+                      height: 40,
+                      width: 40,
                     ),
                     SizedBox(
                       height: 5,

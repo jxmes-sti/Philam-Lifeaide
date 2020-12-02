@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:philam_lifeaide/constants.dart';
 import 'package:philam_lifeaide/screens/auth/signup.dart';
 import 'package:philam_lifeaide/screens/home/components/tab_controller.dart';
+
+import 'components/wave_clipper1.dart';
+import 'components/wave_clipper2.dart';
+import 'components/wave_clipper3.dart';
 
 class WelcomePage extends StatefulWidget {
   @override
@@ -165,7 +170,7 @@ class _WelcomePageState extends State<WelcomePage> {
             ),
           ),
           SizedBox(
-            height: 40,
+            height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -188,6 +193,24 @@ class _WelcomePageState extends State<WelcomePage> {
                 },
               )
             ],
+          ),
+          OrDivider(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SocalIcon(
+                iconSrc: "assets/icons/facebook.svg",
+                press: () {},
+              ),
+              SocalIcon(
+                iconSrc: "assets/icons/twitter.svg",
+                press: () {},
+              ),
+              SocalIcon(
+                iconSrc: "assets/icons/google-plus.svg",
+                press: () {},
+              ),
+            ],
           )
         ],
       ),
@@ -195,83 +218,71 @@ class _WelcomePageState extends State<WelcomePage> {
   }
 }
 
-class WaveClipper1 extends CustomClipper<Path> {
+class OrDivider extends StatelessWidget {
   @override
-  Path getClip(Size size) {
-    final path = Path();
-    path.lineTo(0.0, size.height - 50);
-
-    var firstEndPoint = Offset(size.width * 0.6, size.height - 29 - 50);
-    var firstControlPoint = Offset(size.width * .25, size.height - 60 - 50);
-    path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
-        firstEndPoint.dx, firstEndPoint.dy);
-
-    var secondEndPoint = Offset(size.width, size.height - 60);
-    var secondControlPoint = Offset(size.width * 0.84, size.height - 50);
-    path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
-        secondEndPoint.dx, secondEndPoint.dy);
-    path.lineTo(size.width, size.height);
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: size.height * 0.02),
+      width: size.width * 0.8,
+      child: Row(
+        children: <Widget>[
+          buildDivider(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Text(
+              "OR",
+              style: TextStyle(
+                color: kPrimaryColor,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+          buildDivider(),
+        ],
+      ),
+    );
   }
 
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) {
-    return false;
-  }
-}
-
-class WaveClipper3 extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    final path = Path();
-    path.lineTo(0.0, size.height - 50);
-
-    var firstEndPoint = Offset(size.width * 0.6, size.height - 15 - 50);
-    var firstControlPoint = Offset(size.width * .25, size.height - 60 - 50);
-    path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
-        firstEndPoint.dx, firstEndPoint.dy);
-
-    var secondEndPoint = Offset(size.width, size.height - 40);
-    var secondControlPoint = Offset(size.width * 0.84, size.height - 30);
-    path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
-        secondEndPoint.dx, secondEndPoint.dy);
-    path.lineTo(size.width, size.height);
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) {
-    return false;
+  Expanded buildDivider() {
+    return Expanded(
+      child: Divider(
+        color: Color(0xFFD9D9D9),
+        height: 1.5,
+      ),
+    );
   }
 }
 
-class WaveClipper2 extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    final path = Path();
-    path.lineTo(0.0, size.height - 50);
-
-    var firstEndPoint = Offset(size.width * .7, size.height - 40);
-    var firstControlPoint = Offset(size.width * .25, size.height);
-    path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
-        firstEndPoint.dx, firstEndPoint.dy);
-
-    var secondEndPoint = Offset(size.width, size.height - 45);
-    var secondControlPoint = Offset(size.width * 0.84, size.height - 50);
-    path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
-        secondEndPoint.dx, secondEndPoint.dy);
-    path.lineTo(size.width, size.height);
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
-  }
+class SocalIcon extends StatelessWidget {
+  final String iconSrc;
+  final Function press;
+  const SocalIcon({
+    Key key,
+    this.iconSrc,
+    this.press,
+  }) : super(key: key);
 
   @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) {
-    return false;
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: press,
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 10),
+        padding: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          border: Border.all(
+            width: 2,
+            color: kPrimaryLightColor,
+          ),
+          shape: BoxShape.circle,
+        ),
+        child: SvgPicture.asset(
+          iconSrc,
+          height: 20,
+          width: 20,
+        ),
+      ),
+    );
   }
 }

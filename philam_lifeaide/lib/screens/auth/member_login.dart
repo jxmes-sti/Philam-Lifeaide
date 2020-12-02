@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:philam_lifeaide/constants.dart';
-import 'package:philam_lifeaide/screens/auth/login.dart';
-
+import 'package:philam_lifeaide/screens/auth/signup.dart';
+import 'package:philam_lifeaide/screens/home/components/tab_controller.dart';
 import 'components/wave_clipper1.dart';
 import 'components/wave_clipper2.dart';
 import 'components/wave_clipper3.dart';
 
-class SignupPage extends StatefulWidget {
+class MemberPage extends StatefulWidget {
   @override
-  _SignupPageState createState() => _SignupPageState();
+  _MemberPage createState() => _MemberPage();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class _MemberPage extends State<MemberPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,22 +48,18 @@ class _SignupPageState extends State<SignupPage> {
                   child: Column(
                     children: <Widget>[
                       SizedBox(
+                        height: 40,
+                      ),
+                      Icon(
+                        Icons.login,
+                        color: Colors.white,
+                        size: 60,
+                      ),
+                      SizedBox(
                         height: 20,
                       ),
-                      Container(
-                          width: 120.0,
-                          height: 120.0,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: ExactAssetImage('assets/images/list.png'),
-                              fit: BoxFit.fill,
-                            ),
-                          )),
-                      SizedBox(
-                        height: 5,
-                      ),
                       Text(
-                        "SIGN UP",
+                        "PHILAM NUTRIAIDE",
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w700,
@@ -81,7 +77,7 @@ class _SignupPageState extends State<SignupPage> {
             ],
           ),
           SizedBox(
-            height: 10,
+            height: 30,
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 32),
@@ -92,7 +88,7 @@ class _SignupPageState extends State<SignupPage> {
                 onChanged: (String value) {},
                 cursorColor: Colors.deepOrange,
                 decoration: InputDecoration(
-                    hintText: "Username/Email",
+                    hintText: "User ID",
                     prefixIcon: Material(
                       elevation: 0,
                       borderRadius: BorderRadius.all(Radius.circular(30)),
@@ -137,90 +133,6 @@ class _SignupPageState extends State<SignupPage> {
             ),
           ),
           SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 32),
-            child: Material(
-              elevation: 2.0,
-              borderRadius: BorderRadius.all(Radius.circular(30)),
-              child: TextField(
-                keyboardType: TextInputType.number,
-                onChanged: (String value) {},
-                cursorColor: Colors.deepOrange,
-                decoration: InputDecoration(
-                    hintText: "Age",
-                    prefixIcon: Material(
-                      elevation: 0,
-                      borderRadius: BorderRadius.all(Radius.circular(30)),
-                      child: Icon(
-                        Icons.face,
-                        color: Colors.red,
-                      ),
-                    ),
-                    border: InputBorder.none,
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 25, vertical: 13)),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 32),
-            child: Material(
-              elevation: 2.0,
-              borderRadius: BorderRadius.all(Radius.circular(30)),
-              child: TextField(
-                keyboardType: TextInputType.number,
-                onChanged: (String value) {},
-                cursorColor: Colors.deepOrange,
-                decoration: InputDecoration(
-                    hintText: "Height (cm)",
-                    prefixIcon: Material(
-                      elevation: 0,
-                      borderRadius: BorderRadius.all(Radius.circular(30)),
-                      child: Icon(
-                        Icons.height,
-                        color: Colors.red,
-                      ),
-                    ),
-                    border: InputBorder.none,
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 25, vertical: 13)),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 32),
-            child: Material(
-              elevation: 2.0,
-              borderRadius: BorderRadius.all(Radius.circular(30)),
-              child: TextField(
-                keyboardType: TextInputType.number,
-                onChanged: (String value) {},
-                cursorColor: Colors.deepOrange,
-                decoration: InputDecoration(
-                    hintText: "Weight (kg)",
-                    prefixIcon: Material(
-                      elevation: 0,
-                      borderRadius: BorderRadius.all(Radius.circular(30)),
-                      child: Icon(
-                        Icons.fitness_center,
-                        color: Colors.red,
-                      ),
-                    ),
-                    border: InputBorder.none,
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 25, vertical: 13)),
-              ),
-            ),
-          ),
-          SizedBox(
             height: 25,
           ),
           Padding(
@@ -231,43 +143,34 @@ class _SignupPageState extends State<SignupPage> {
                     color: Color(0xffff3a5a)),
                 child: FlatButton(
                   child: Text(
-                    "Sign up",
+                    "Login",
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
                         fontSize: 18),
                   ),
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => WelcomePage()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => TabControllerWidget()));
                   },
                 ),
               )),
           SizedBox(
             height: 10,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                "Already Have an Account ? ",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 12,
-                    fontWeight: FontWeight.normal),
-              ),
-              TextButton(
-                child: Text(
-                  "Sign in",
-                  style: TextStyle(color: Colors.red),
-                ),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => WelcomePage()));
-                },
-              )
-            ],
-          )
+          Center(
+              child: TextButton(
+            child: Text(
+              "How to join?",
+              style: TextStyle(color: Colors.red, fontSize: 20),
+            ),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SignupPage()));
+            },
+          )),
         ],
       ),
     );
